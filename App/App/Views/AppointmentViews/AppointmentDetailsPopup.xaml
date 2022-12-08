@@ -1,0 +1,313 @@
+﻿<pages:PopupPage  xmlns:xct1="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" xmlns:pages="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:App.ViewModels" x:DataType="viewmodels:AppointmentViewModel"
+                  x:Class="App.Views.AppointmentDetailsPopup" xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack" 
+                  xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects" 
+                  xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:dpicker="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" xmlns:app1="clr-namespace:App.Tools" HasKeyboardOffset="False">
+    <ContentPage.Resources >
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame CornerRadius="30"  BackgroundColor="#5b4bd2" WidthRequest="500" HeightRequest="600" Margin="20,0">
+            <StackLayout>
+                <ImageButton Source="x.png" Command="{Binding CloseWindow}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="20" HorizontalOptions="End"></ImageButton>
+
+                <Grid ColumnSpacing="10" RowSpacing="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Text="Paciente:" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0" ></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding Patient}" FontSize="15" TextColor="White" 
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+
+                                </StackLayout>
+                            </Frame>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="0" HeightRequest="50">
+                        <Image Source="block.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="1" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Valor da consulta:" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0" ></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding Price}" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" FontSize="15" TextColor="White" 
+                                           VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
+                                           HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+
+                                    <Entry Text="{Binding Price}" IsVisible="{Binding EditEnable}" Keyboard="Numeric" FontSize="15" TextColor="White" PlaceholderColor="White" 
+                                           VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"  
+                                           HorizontalTextAlignment="Start">
+                                        <Entry.Effects>
+                                            <effects:PlainEntry></effects:PlainEntry>
+                                        </Entry.Effects>
+                                    </Entry>
+                                </StackLayout>
+                            </Frame>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="1" HeightRequest="50">
+                        <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+                    
+                    <Grid Grid.Column="0" Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" HeightRequest="50">
+                            <Grid RowSpacing="-10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="40"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Text="Data:" FontSize="15" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+                                <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                    <StackLayout>
+                                        <Label Text="{Binding DateString}" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" FontSize="15" TextColor="White" 
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+
+                                        <DatePicker Date="{Binding Date}" IsVisible="{Binding EditEnable}" Format="dd/MM/yyyy" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                            TextColor="White" FontSize="15">
+                                            <DatePicker.Effects>
+                                                <effects:PlainEntry></effects:PlainEntry>
+                                            </DatePicker.Effects>
+                                        </DatePicker>
+
+                                    </StackLayout>
+                                </Frame>
+
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1"  HeightRequest="50">
+                            <Grid RowSpacing="-10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="40"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Text="Horário:" FontSize="15" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+                                <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                    <StackLayout>
+                                        <Label Text="{Binding TimeString}" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" FontSize="15" TextColor="White" 
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+
+                                        <TimePicker Time="{Binding Time}" IsVisible="{Binding EditEnable}" Format="HH:mm" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                            TextColor="White" FontSize="15">
+                                            <TimePicker.Effects>
+                                                <effects:PlainEntry></effects:PlainEntry>
+                                            </TimePicker.Effects>
+                                        </TimePicker>
+                                    </StackLayout>
+                                </Frame>
+                                <Label Grid.Row="2" Text="Choque de horário" TextColor="#e8473c" FontAttributes="Bold" IsVisible="{Binding TimeSpanError}"
+                               HorizontalOptions="StartAndExpand" Padding="10,10,0,0" ></Label>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+
+
+                    <StackLayout Grid.Column="1" Grid.Row="2" HeightRequest="50">
+                        <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Column="0" Grid.Row="3" HeightRequest="50">
+                        
+                        <Grid RowSpacing="-10" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Text="Duração:" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0" ></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding DurationString}"  FontSize="15" TextColor="White" 
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+
+                        <Grid RowSpacing="-10" IsVisible="{Binding EditEnable}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" RowSpacing="-10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="30"></RowDefinition>
+
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="Horas: "  TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                                    <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="5,0,0,0" BorderColor="Transparent" >
+
+                                    <app1:BorderlessPicker BackgroundColor="Transparent" ItemsSource="{Binding HoursOptions}" SelectedItem="{Binding DurationHour}" 
+                                                          VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="15" 
+                                                          HorizontalTextAlignment="Start"/>
+
+                                    </Frame>
+
+                                </Grid>
+
+                                <Grid Grid.Column="1" RowSpacing="-10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="30"></RowDefinition>
+
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="Minutos: "  TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                                    <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="5,0,0,0" BorderColor="Transparent" >
+
+
+                                        <app1:BorderlessPicker ItemsSource="{Binding MinOptions}" SelectedItem="{Binding DurationMin}" FontSize="15" 
+                               TextColor="White" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" >
+                                            <app1:BorderlessPicker.Effects>
+                                                <effects:PlainEntry></effects:PlainEntry>
+                                            </app1:BorderlessPicker.Effects>
+                                        </app1:BorderlessPicker>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                    </StackLayout>
+
+
+                <StackLayout Grid.Column="0" Grid.Row="4" HeightRequest="50">
+
+               
+                </StackLayout>
+                    
+                    <StackLayout Grid.Column="1" Grid.Row="3" HeightRequest="50">
+                        <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="4" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Status do pagamento:" FontSize="15" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding PaymentStatusString}" FontSize="15" TextColor="White"
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+
+                                </StackLayout>
+                            </Frame>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="4" HeightRequest="50">
+
+                        <Switch IsToggled="{Binding IsToggled, Mode=TwoWay}" IsVisible="{Binding EditEnable}" 
+                                VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                            <Switch.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="Toggled"  Command="{Binding Pay}" ></behaviors:EventToCommandBehavior>
+                            </Switch.Behaviors>
+                        </Switch>
+
+                    </StackLayout>
+
+                </Grid>
+            
+                <Grid VerticalOptions="End" HeightRequest="100" Margin="0,50,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0" Grid.Row="0" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" BackgroundColor="#6371e8" 
+                            CornerRadius="30" Margin="40,20,40,30" Text="Editar" FontAttributes="Bold" FontSize="12" TextColor="White" Command="{Binding Edit}" 
+                            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                    </Button>
+
+                    <Button Grid.Column="0" Grid.Row="0" IsVisible="{Binding EditEnable}" BackgroundColor="#2cbb77" CornerRadius="30" Margin="40,20,40,30" Text="Confirmar" FontAttributes="Bold"
+                            FontSize="12" TextColor="White" Command="{Binding Confirm}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  
+                            xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                    </Button>
+
+                    <Button Grid.Column="1" Grid.Row="0" BackgroundColor="#e8473c" CornerRadius="30" Margin="40,20,40,30" Text="Remover" FontAttributes="Bold" FontSize="12"
+                            TextColor="White" Command="{Binding Delete}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  
+                            xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                    </Button>
+
+
+                </Grid>
+
+            </StackLayout>
+
+        </Frame>
+
+    </StackLayout>
+
+
+
+
+
+
+</pages:PopupPage>

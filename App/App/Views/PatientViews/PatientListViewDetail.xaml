@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:app1="clr-namespace:App.Tools"
+             NavigationPage.HasNavigationBar="False" xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects" 
+             x:Class="App.Views.PatientListViewDetail" Shell.TabBarIsVisible="False">
+
+    <StackLayout BackgroundColor="#5b4bd2" Padding="0,5,0,0">
+
+        <StackLayout HeightRequest="50" VerticalOptions="StartAndExpand" Padding="0,0,0,0" Margin="0,0,0,10">
+            <ImageButton HorizontalOptions="StartAndExpand" Source="back.png" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" 
+                             VerticalOptions="StartAndExpand" Command="{Binding GoBack}"></ImageButton>
+        </StackLayout>
+
+        <Grid HorizontalOptions="Center" Margin="10,20,10,20" VerticalOptions="Fill">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Frame  Padding="0,-5,0,0" Margin="0, 10, 0, 0" CornerRadius="30" Grid.Column="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <ImageButton Source="arrow.png" WidthRequest="15" HeightRequest="15"  Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" 
+                                     VerticalOptions="CenterAndExpand"  Margin="0" BackgroundColor="Transparent" Clicked="ImageButton_Clicked"></ImageButton>
+                    <app1:BorderlessPicker  x:Name="FilterPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10, 0, 10, 0" 
+                                               ItemsSource="{Binding Filters}" SelectedItem="{Binding SelectedFilter}" Title="Selecionar" />
+
+                </Grid>
+            </Frame>
+
+            <Frame Padding="-10,10,0,10" Grid.Column="1" BackgroundColor="White" CornerRadius="30" Margin="0,10,0,0" >
+                <SearchBar  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Placeholder="{Binding FilterText}" 
+                            Text="{Binding Filter}" Keyboard="{Binding Keyboard}">
+                    <SearchBar.Effects>
+                        <effects:PlainEntry></effects:PlainEntry>
+                    </SearchBar.Effects>
+                </SearchBar>
+            </Frame>
+            
+
+        </Grid>
+
+        <Frame BackgroundColor="#6371e8" CornerRadius="30" Margin="10,20,10,20" VerticalOptions="FillAndExpand" BorderColor="Transparent">
+            <StackLayout>
+                <ActivityIndicator IsRunning="{Binding IsLoading}" Color="White" HorizontalOptions="Center" FlowDirection="RightToLeft"></ActivityIndicator>
+
+                <ListView x:Name="patientListView" ItemAppearing="patientListView_ItemAppearing"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              ItemsSource="{Binding PatientsFilteredList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="20" Padding="15,10" HorizontalOptions="FillAndExpand">
+                                    <Label VerticalOptions="FillAndExpand" FontSize="Large" TextColor="White"
+                                       VerticalTextAlignment="Center" 
+                                       Text="{Binding Name}" />
+                                    <BoxView HeightRequest="2" Color="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></BoxView>
+
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+        </Frame>
+    </StackLayout>
+</ContentPage>

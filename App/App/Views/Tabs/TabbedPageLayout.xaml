@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:App.Views" xmlns:custom ="clr-namespace:App.Tools"
+             x:Class="App.Views.Tabs.TabbedPageLayout" NavigationPage.HasNavigationBar="False" BackgroundColor="#5b4bd2" 
+            android:TabbedPage.IsSmoothScrollEnabled="false" xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
+       
+            android:TabbedPage.ToolbarPlacement="Bottom" Shell.NavBarHasShadow="False" Padding="0,0,0,0" Shell.NavBarIsVisible="False" Shell.TabBarUnselectedColor="White">
+
+
+
+    <TabBar x:Name="tab">
+        <Tab Icon="checklist.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Hub}"></ShellContent>
+        </Tab>
+        <Tab x:Name="home" Icon="home.png" >
+            
+            <ShellContent ContentTemplate="{DataTemplate local:Home}">
+            </ShellContent>
+        </Tab>
+        <Tab  Icon="charthistogram.png">
+            <ShellContent x:Name="chartTab" ></ShellContent>
+        </Tab>
+              
+    </TabBar>
+    
+
+
+</Shell>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tabsvm="clr-namespace:App.ViewModels.TabsVM" x:DataType="tabsvm:HubViewModel" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="App.Views.Hub" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#5b4bd2" Padding="0,5,0,0">
+
+            <Frame BackgroundColor="#6371e8" CornerRadius="30" Margin="10,20,10,20" HeightRequest="100" BorderColor="Transparent">
+                <Label Text="{Binding AppointmentText}" FontAttributes="Bold" FontSize="23" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </Frame>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" BackgroundColor="#6371e8" CornerRadius="30" Margin="40,20,40,30" Text="Lista" FontAttributes="Bold" FontSize="23"
+                    TextColor="White" Command="{Binding AppointmentListCommand}" HeightRequest="130" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                </Button>
+                <Button Grid.Column="1"  BackgroundColor="#6371e8" CornerRadius="30" Margin="40,20,40,30" Text="Agenda" FontAttributes="Bold" FontSize="23"
+                    TextColor="White" Command="{Binding AppointmentScheduleCommand}" HeightRequest="130" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                </Button>
+            </Grid>
+            
+
+            <BoxView HeightRequest="5" Color="White" Margin="10,0"></BoxView>
+
+            <Frame BackgroundColor="#6371e8" CornerRadius="30" Margin="10,30,10,20" HeightRequest="100" BorderColor="Transparent">
+                <Label Text="{Binding PatientText}" FontAttributes="Bold" FontSize="23" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </Frame>
+
+            <Button BackgroundColor="#6371e8" CornerRadius="30" Margin="40,20,40,30" Text="Lista de pacientes" FontAttributes="Bold" FontSize="23"
+                    TextColor="White" Command="{Binding PatientListCommand}" HeightRequest="130" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

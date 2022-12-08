@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tabsvm="clr-namespace:App.ViewModels.TabsVM" x:DataType="tabsvm:HomeViewModel" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="App.Views.Home" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#5b4bd2" Padding="0,5,0,0">
+
+            <Frame BackgroundColor="#6371e8" CornerRadius="30" Margin="10,20,10,20" HeightRequest="100" BorderColor="Transparent">
+                <Label Text="{Binding AppointmentText}" FontAttributes="Bold" FontSize="23" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </Frame>
+
+            <Button BackgroundColor="#6371e8" CornerRadius="30" Margin="40,20,40,30" Text="Nova consulta" FontAttributes="Bold" FontSize="23"
+                    TextColor="White" Command="{Binding RegisterAppointmentCommand}" HeightRequest="130" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+            </Button>
+           
+            <BoxView HeightRequest="5" Color="White" Margin="10,0"></BoxView>
+
+            <Frame BackgroundColor="#6371e8" CornerRadius="30" Margin="10,30,10,20" HeightRequest="100" BorderColor="Transparent">
+                <Label Text="{Binding PatientText}" FontAttributes="Bold" FontSize="23" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </Frame>
+
+            <Button BackgroundColor="#6371e8" CornerRadius="30" Margin="40,20,40,30" Text="Registrar paciente" FontAttributes="Bold" FontSize="23"
+                    TextColor="White" Command="{Binding RegisterPatientCommand}" HeightRequest="130" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

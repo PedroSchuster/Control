@@ -1,0 +1,18 @@
+﻿ <pages:PopupPage  xmlns:pages="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                   xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+                   x:Class="App.Views.CalendarPopup">
+   
+        <StackLayout  BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame CornerRadius="30" BackgroundColor="#6371E8" WidthRequest="400" HeightRequest="400" Margin="20,0">
+            <plugin:RangeSelectionCalendar x:Name="calendar" BackgroundColor="#6371E8" CalendarLayout="Month" CalendarSectionShown="True" SelectedDateColor="#6371E8" SelectedDates="{Binding Dates}"
+                                       SelectedStartDate="{Binding StartDate}" SelectedEndDate="{Binding EndDate}" ArrowsColor="White" DaysTitleColor="White"
+                                       DeselectedDayTextColor="White" MonthLabelColor="White" YearLabelColor="White" AnimateCalendar="True" FooterSectionVisible="False"
+                                           FooterArrowVisible="False" Margin="0,0,0,20" DayTappedCommand="{Binding OnTapCommand}"
+                                           DisableSwipeDetection="True"/>
+
+        </Frame>
+        
+    </StackLayout>
+    
+</pages:PopupPage>

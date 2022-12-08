@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:dvx="http://schemas.devexpress.com/xamarin/2014/forms/scheduler" 
+             xmlns:viewmodels="clr-namespace:App.ViewModels" x:DataType="viewmodels:ScheduleViewModel"
+             x:Class="App.Views.AppointmentViews.ScheduleView" NavigationPage.HasNavigationBar="False" Shell.TabBarIsVisible="False">
+    <dvx:DayView WorkDays="Monday,Tuesday,Wednesday,Thursday,Friday,WorkDays,WeekendDays" BackgroundColor="#5b4bd2" SnapToCellsMode="Never" CellMinHeight="35">
+        <dvx:DayView.TimeRulerHeaderStyle>
+            <dvx:TimeRulerHeaderStyle BackgroundColor="#5b4bd2">
+            </dvx:TimeRulerHeaderStyle>
+        </dvx:DayView.TimeRulerHeaderStyle>
+
+        <dvx:DayView.TimeRulerCellStyle>
+            <dvx:TimeRulerCellStyle BackgroundColor="#5b4bd2">
+                <dvx:TimeRulerCellStyle.IntervalLabelTextStyle>
+                    <dvx:TextStyle Color="White" ></dvx:TextStyle>
+                </dvx:TimeRulerCellStyle.IntervalLabelTextStyle>
+                <dvx:TimeRulerCellStyle.SlotLabelTextStyle>
+                    <dvx:TextStyle Color="White"></dvx:TextStyle>
+                </dvx:TimeRulerCellStyle.SlotLabelTextStyle>
+            </dvx:TimeRulerCellStyle>
+        </dvx:DayView.TimeRulerCellStyle>
+        
+        <dvx:DayView.HeaderItemStyle>
+            <dvx:DayViewHeaderItemStyle BackgroundColor="#5b4bd2">
+                <dvx:DayViewHeaderItemStyle.DayNumberTextStyle>
+                    <dvx:TextStyle Color="White"></dvx:TextStyle>
+                </dvx:DayViewHeaderItemStyle.DayNumberTextStyle>
+
+                <dvx:DayViewHeaderItemStyle.TodayDayNumberTextStyle>
+                    <dvx:TextStyle Color="White"></dvx:TextStyle>
+
+                </dvx:DayViewHeaderItemStyle.TodayDayNumberTextStyle>
+
+                <dvx:DayViewHeaderItemStyle.TodayWeekDayTextStyle>
+                    <dvx:TextStyle Color="White"></dvx:TextStyle>
+                </dvx:DayViewHeaderItemStyle.TodayWeekDayTextStyle>
+
+                <dvx:DayViewHeaderItemStyle.WeekDayTextStyle>
+                    <dvx:TextStyle Color="White"></dvx:TextStyle>
+                </dvx:DayViewHeaderItemStyle.WeekDayTextStyle>
+
+            </dvx:DayViewHeaderItemStyle>
+        </dvx:DayView.HeaderItemStyle>
+
+        <dvx:DayView.AllDayCellStyle>
+            <dvx:AllDayAreaCellStyle TodayBackgroundColor="Transparent" BackgroundColor="#5b4bd2"></dvx:AllDayAreaCellStyle>
+        </dvx:DayView.AllDayCellStyle>
+
+        <dvx:DayView.CellStyle>
+            <dvx:DayViewCellStyle WorkTimeBackgroundColor="#a5aef7" BackgroundColor="#a5aef7" TodayBackgroundColor="#a5aef7"></dvx:DayViewCellStyle>
+        </dvx:DayView.CellStyle>
+
+
+        
+    <dvx:DayView.AppointmentStyle>
+            <dvx:AppointmentStyle>
+                <dvx:AppointmentStyle.TextStyle>
+                    <dvx:TextStyle Color="White"></dvx:TextStyle>
+                </dvx:AppointmentStyle.TextStyle>
+            </dvx:AppointmentStyle>
+        </dvx:DayView.AppointmentStyle>
+        
+        <dvx:DayView.DataStorage>
+            <dvx:SchedulerDataStorage>
+                <dvx:SchedulerDataStorage.DataSource>
+                    <dvx:DataSource AppointmentsSource="{Binding Appointments}" AppointmentLabelsSource="{Binding AppointmentsLabel}">
+                        <dvx:DataSource.AppointmentMappings>
+                            <dvx:AppointmentMappings 
+                                Id="Id" 
+                                Start="StartTime" 
+                                End="EndTime" 
+                                Subject="Subject"
+                                LabelId="LabelId"/>
+                        </dvx:DataSource.AppointmentMappings>
+                        <dvx:DataSource.AppointmentLabelMappings>
+                            <dvx:AppointmentLabelMappings
+                                Caption="Caption"
+                                Color="Color"
+                                Id="Id"/>
+                        </dvx:DataSource.AppointmentLabelMappings>
+                    </dvx:DataSource>
+                </dvx:SchedulerDataStorage.DataSource>
+            </dvx:SchedulerDataStorage>
+        </dvx:DayView.DataStorage>
+    </dvx:DayView>
+</ContentPage>
