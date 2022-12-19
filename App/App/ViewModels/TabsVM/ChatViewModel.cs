@@ -267,7 +267,7 @@ namespace App.ViewModels.TabsVM
 
         }
 
-        public async void OnPropertyChanged(string propertyName)
+        public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
@@ -295,12 +295,12 @@ namespace App.ViewModels.TabsVM
 
             if ((propertyName == nameof(SelectedMonth) && MonthIsVisible) || (propertyName == nameof(MonthIsVisible) && MonthIsVisible))
             {
-                await LoadData(null, null, null, SelectedMonth + 1);
+                Task.Run(()=> LoadData(null, null, null, SelectedMonth + 1)).Wait();
 
             }
             else if ((propertyName == nameof(SelectedYear) && YearIsVisible) || (propertyName == nameof(YearIsVisible) && YearIsVisible))
             {
-                await LoadData(null, null, SelectedYear, null);
+                Task.Run(() => LoadData(null, null, SelectedYear, null)).Wait();
             }
             else if ((propertyName == nameof(StartDate) && DateIsVisible) ||
                 (propertyName == nameof(EndDate) && DateIsVisible) || (propertyName == nameof(DateIsVisible) && DateIsVisible))
@@ -308,14 +308,14 @@ namespace App.ViewModels.TabsVM
                 DateTime endDateTime = new DateTime();
                 endDateTime = EndDate.Value.Add(new TimeSpan(23, 59, 59));
 
-                await LoadData(StartDate, endDateTime, null, null);
+                Task.Run(()=> LoadData(StartDate, endDateTime, null, null)).Wait();
             }
 
         }
 
-        public async Task LoadData(DateTime? startDate, DateTime? endDate, int? selectedYear, int? selectedMonth)
+        public async void LoadData(DateTime? startDate, DateTime? endDate, int? selectedYear, int? selectedMonth)
         {
-            Chart = await Startup.ServiceProvider.GetService<GenerateChartService>().GenrateChartAsync(selectedMonth, selectedYear, startDate, endDate);
+            Chart = await Startup.ServiceProvider.GetService<GenerateChartService>().GenerateChartAsync(selectedMonth, selectedYear, startDate, endDate);
 
             count = new ObservableCollection<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().
                 FilterSearchAsync(null, startDate, endDate, null, selectedYear, selectedMonth, null, true)).Count;

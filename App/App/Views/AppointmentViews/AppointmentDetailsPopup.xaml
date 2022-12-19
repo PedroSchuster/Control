@@ -222,15 +222,12 @@
                                             </app1:BorderlessPicker.Effects>
                                         </app1:BorderlessPicker>
                                     </Frame>
-                                </Grid>
                             </Grid>
+                            <Label Grid.Row="2" IsEnabled="False" Text="Duração da consulta não pode ser 0" TextColor="#e8473c" FontAttributes="Bold" IsVisible="{Binding TimeSpanNull}"
+                               HorizontalOptions="StartAndExpand" Padding="10,10,0,0" ></Label>
+                        </Grid>
                     </StackLayout>
 
-
-                <StackLayout Grid.Column="0" Grid.Row="4" HeightRequest="50">
-
-               
-                </StackLayout>
                     
                     <StackLayout Grid.Column="1" Grid.Row="3" HeightRequest="50">
                         <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 

@@ -251,9 +251,8 @@ namespace App.ViewModels
                (propertyName == nameof(StartDate) && DateFilterIsVisible) || propertyName == (nameof(isReseting)) ||
                (propertyName == nameof(EndDate) && DateFilterIsVisible) || propertyName == nameof(OrderByAscending)))
             {
-                AppointmentsFilteredList = new ObservableCollection<Appointment>();
                 await Load();
-                LoadItems();
+                AppointmentsFilteredList = appointments;
             }
 
             if (propertyName == nameof(SelectedFilter))
@@ -291,16 +290,6 @@ namespace App.ViewModels
 
         private async Task<List<Appointment>> Search()
         {
-            if (StartDate == null)
-            {
-                StartDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            }
-
-            if(EndDate == null)
-            {
-                EndDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month));
-            }
-
             DateTime? endDateTime = new DateTime();
             if (EndDate.HasValue)
             {
@@ -349,7 +338,7 @@ namespace App.ViewModels
                     IsLoading = true;
                     int offset = appointments.Count >= 10 ? 10 : appointments.Count;
 
-                    Device.StartTimer(TimeSpan.FromSeconds(1.5), () => {
+                    Device.StartTimer(TimeSpan.FromSeconds(1), () => {
                         for (int i = 0; i < offset; i++)
                         {
                             if (AppointmentsFilteredList.Count + 1 <= appointments.Count)
@@ -365,22 +354,6 @@ namespace App.ViewModels
             
 
         }
-
-        public void RemoveItem(Appointment appointment)
-        {
-            if (!IsLoading)
-            {
-                IsLoading = true;
-
-                Device.StartTimer(TimeSpan.FromSeconds(1.5), () => {
-                    AppointmentsFilteredList.Remove(appointment);
-                    OnPropertyChanged(nameof(AppointmentsFilteredList));
-                    return IsLoading = false;
-                });
-            }
-
-        }
-
 
     }
 }

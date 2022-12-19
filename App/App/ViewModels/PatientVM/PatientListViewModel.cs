@@ -270,7 +270,7 @@ namespace App.ViewModels
                     IsLoading = true;
                     int offset = patients.Count >= 10 ? 10 : patients.Count;
                     
-                    Device.StartTimer(TimeSpan.FromSeconds(1.5), () =>
+                    Device.StartTimer(TimeSpan.FromSeconds(1), () =>
                     {
                         for (int i = 0; i < offset; i++)
                         {
@@ -285,21 +285,6 @@ namespace App.ViewModels
                 }
             }
            
-        }
-
-        public void RemoveItem(Patient patient)
-        {
-            if (!IsLoading)
-            {
-                IsLoading = true;
-
-                Device.StartTimer(TimeSpan.FromSeconds(1.5), () => {
-                    PatientsFilteredList.Remove(patient);
-                    OnPropertyChanged(nameof(PatientsFilteredList));
-                    return IsLoading = false;
-                });
-            }
-
         }
 
     }

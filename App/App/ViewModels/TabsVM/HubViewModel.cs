@@ -72,7 +72,7 @@ namespace App.ViewModels.TabsVM
 
             Task.Run(async () =>
             {
-                totalAppointmentPerDay = new List<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, DateTime.Today, null, null, null, null, null, true)).Count;
+                totalAppointmentPerDay = new List<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, DateTime.Today, DateTime.Today.Add(new TimeSpan(23,59,59)), null, null, null, null, true)).Count;
                 
                 DateTime baseDate = DateTime.Today;
                 DateTime thisWeekStart = baseDate.AddDays(-(int)baseDate.DayOfWeek);
