@@ -17,8 +17,22 @@ namespace App.Views
         public ChartView()
         {
             InitializeComponent();
+
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
             BindingContext = new ChartViewModel();
 
+            MessagingCenter.Subscribe<CalendarViewModel>(this, "UpdateDates", (e) =>
+            {
+                var bind = this.BindingContext as ChartViewModel;
+                bind.StartDate = e.StartDate;
+                bind.EndDate = e.EndDate;
+            });
         }
 
         private void FilterButton_Clicked(object sender, EventArgs e)
@@ -34,31 +48,6 @@ namespace App.Views
             YearPicker.Focus();
         }
 
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            BindingContext = new ChartViewModel();
-
-            var b = BindingContext as ChartViewModel;
-
-
-            MessagingCenter.Subscribe<CalendarViewModel>(this, "UpdateDates", (e) =>
-            {
-                var bind = this.BindingContext as ChartViewModel;
-                bind.StartDate = e.StartDate;
-                bind.EndDate = e.EndDate;
-            });
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            var b = BindingContext as ChartViewModel;
-
-            b.SelectedFilter = "Mês";
-        }
 
     }
 }

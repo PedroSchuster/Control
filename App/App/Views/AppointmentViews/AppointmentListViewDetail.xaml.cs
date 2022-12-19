@@ -60,7 +60,9 @@ namespace App.Views
                 Task.Run(async () =>
                 {
                     await b.Load();
-                    b.RemoveItem(p);
+                    b.AppointmentsFilteredList = new ObservableCollection<Appointment>();
+                    b.LoadItems();
+
                 });
             });
 

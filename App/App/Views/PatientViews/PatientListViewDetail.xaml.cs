@@ -80,7 +80,8 @@ namespace App.Views
                 Task.Run(async () =>
                 {
                     await b.Load();
-                    b.RemoveItem(p);
+                    b.PatientsFilteredList = new ObservableCollection<Patient>();
+                    b.LoadItems();
                 });
             });
 

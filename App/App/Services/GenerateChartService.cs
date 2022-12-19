@@ -19,7 +19,7 @@ namespace App.Services
     {
         public GenerateChartService() { }
 
-        public Task<PieChart> GenrateChartAsync(int? month, int? year, DateTime? startDate, DateTime? finalDate)
+        public Task<PieChart> GenerateChartAsync(int? month, int? year, DateTime? startDate, DateTime? finalDate)
         {
             try
             {

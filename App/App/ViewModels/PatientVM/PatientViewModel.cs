@@ -64,13 +64,11 @@ namespace App.ViewModels
             }
         }
 
-        private string _birthString;
         public string BirthString
         {
             get { return Birth.ToString("dd/MM/yyyy"); }
             set
             {
-                _birthString = value;
                 OnPropertyChanged(nameof(BirthString));
             }
         }
@@ -145,7 +143,7 @@ namespace App.ViewModels
 
             CloseWindow = new Command(async () =>
             {
-                MessagingCenter.Send(new PatientListViewModel(), "Reload");
+                MessagingCenter.Send(patient, "Reload");
                 await PopupNavigation.Instance.PopAsync(true);
             });
 
@@ -183,9 +181,7 @@ namespace App.ViewModels
                 if (checkName && checkEmail)
                 {
                     await Startup.ServiceProvider.GetService<PatientService>().UpdateAsync(patient);
-                    int count = Application.Current.MainPage.Navigation.NavigationStack.Count;
-                    PatientListViewDetail page = Application.Current.MainPage.Navigation.NavigationStack[count - 1] as PatientListViewDetail;
-                    MessagingCenter.Send(page.BindingContext as PatientListViewModel, "Reload");
+                    MessagingCenter.Send(patient, "Reload");
                     EditEnable = false;
                 }
 

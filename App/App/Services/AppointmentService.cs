@@ -52,7 +52,7 @@ namespace App.Services
             {
                 List<Appointment> filterSearch = await ToListAsync();
 
-                if (year == null)
+                if (year == null && startDate == null & finalDate == null)
                 {
                     year = DateTime.Today.Year;
                 }

@@ -200,6 +200,17 @@ namespace App.ViewModels
             }
         }
 
+        private bool _timeSpanNull;
+        public bool TimeSpanNull
+        {
+            get { return _timeSpanNull; }
+            set
+            {
+                _timeSpanNull = value;
+                OnPropertyChanged(nameof(TimeSpanNull));
+            }
+        }
+
         private bool _editEnable;
         public bool EditEnable
         {
@@ -273,28 +284,33 @@ namespace App.ViewModels
             Confirm = new Command(async () =>
             {
                 var duration = new TimeSpan(DurationHour, DurationMin, 0);
+                //var date = Date.Add(new TimeSpan(Time.Hours, Time.Minutes, 0));
                 var date = Date.Add(-Date.TimeOfDay + Time);
-                Appointment appVerify = (await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, date, null, null, null, null, duration, true)).FirstOrDefault();
-
-                if (appVerify == null || appVerify.Id == appointment.Id)
+                var appVerify = await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, date, null, null, null, null, duration, true);
+                if (DurationHour != 0 || DurationMin != 0)
                 {
-                    appointment.Duration = duration;
-                    appointment.Date = date;
-                    appointment.Price = Price;
-                    appointment.PaymentStatus = PaymentStatus;
+                    if (appVerify != null && !appVerify.Any(x => x.Id != appointment.Id))
+                    {
+                        appointment.Duration = duration;
+                        appointment.Date = date;
+                        appointment.Price = Price;
+                        appointment.PaymentStatus = PaymentStatus;
 
-                    await Startup.ServiceProvider.GetService<AppointmentService>().UpdateAsync(appointment);
-                    int count = Application.Current.MainPage.Navigation.NavigationStack.Count;
-                    AppointmentListViewDetail page = Application.Current.MainPage.Navigation.NavigationStack[count - 1] as AppointmentListViewDetail;
-                    MessagingCenter.Send(page.BindingContext as AppointmentListViewModel, "Reload");
-                    EditEnable = false;
-                    TimeSpanError = false;
+                        await Startup.ServiceProvider.GetService<AppointmentService>().UpdateAsync(appointment);
+                        MessagingCenter.Send(appointment, "Reload");
+
+                        EditEnable = false;
+                        TimeSpanError = false;
+                    }
+                    else
+                    {
+                        TimeSpanError = true;
+                    }
                 }
                 else
                 {
-                    TimeSpanError = true;
+                    TimeSpanNull = true;
                 }
-
             });
 
         }
@@ -324,6 +340,15 @@ namespace App.ViewModels
             {
                 Duration = new TimeSpan(DurationHour,DurationMin,0);
                 DurationString = Duration.ToString(@"hh\:mm");
+            }
+
+            if (propertyName == nameof(DurationHour) && DurationHour != 0)
+            {
+                TimeSpanNull = false;
+            }
+            else if (propertyName == nameof(DurationMin) && DurationMin != 0)
+            {
+                TimeSpanNull = false;
             }
         }
     }
