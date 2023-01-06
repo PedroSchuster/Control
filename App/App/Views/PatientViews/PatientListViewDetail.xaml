@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:app1="clr-namespace:App.Tools"
-             NavigationPage.HasNavigationBar="False" xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects" 
+             NavigationPage.HasNavigationBar="False" xmlns:effects="clr-namespace:App.Renderes" 
              x:Class="App.Views.PatientListViewDetail" Shell.TabBarIsVisible="False">
 
     <StackLayout BackgroundColor="#5b4bd2" Padding="0,5,0,0">
@@ -30,7 +30,7 @@
 
                     <ImageButton Source="arrow.png" WidthRequest="15" HeightRequest="15"  Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" 
                                      VerticalOptions="CenterAndExpand"  Margin="0" BackgroundColor="Transparent" Clicked="ImageButton_Clicked"></ImageButton>
-                    <app1:BorderlessPicker  x:Name="FilterPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10, 0, 10, 0" 
+                    <effects:BorderlessPicker  x:Name="FilterPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10, 0, 10, 0" 
                                                ItemsSource="{Binding Filters}" SelectedItem="{Binding SelectedFilter}" Title="Selecionar" />
 
                 </Grid>

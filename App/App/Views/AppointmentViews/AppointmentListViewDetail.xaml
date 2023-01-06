@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:app1="clr-namespace:App.Tools" Shell.TabBarIsVisible="False"
-             NavigationPage.HasNavigationBar="False" xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects"
+             NavigationPage.HasNavigationBar="False" xmlns:effects="clr-namespace:App.Renderes"
              x:Class="App.Views.AppointmentListViewDetail">
 
 
@@ -34,7 +34,7 @@
 
                     <ImageButton Source="arrow.png" BackgroundColor="Transparent" WidthRequest="15" HeightRequest="15"  Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" 
                                      VerticalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked" Margin="0"></ImageButton>
-                    <app1:BorderlessPicker x:Name="FilterPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10, 0, 10, 0" 
+                    <effects:BorderlessPicker x:Name="FilterPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10, 0, 10, 0" 
                                            VerticalTextAlignment="Start" BackgroundColor="Transparent"
                                                ItemsSource="{Binding Filters}" SelectedItem="{Binding SelectedFilter}" Title="Selecionar"/>
 
@@ -65,14 +65,14 @@
                         </Grid.RowDefinitions>
                     <ImageButton Source="arrow.png" WidthRequest="15" HeightRequest="15" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" 
                                      VerticalOptions="CenterAndExpand" Margin="0" BackgroundColor="Transparent" Clicked="ImageButton_Clicked_1" ></ImageButton>
-                    <app1:BorderlessPicker x:Name="StatusPicker" Placeholder="Selecione" ItemsSource="{Binding StatusPickerOptions}" Grid.Row="0" Grid.Column="0" SelectedItem="{Binding PaymentStatus}"
+                    <effects:BorderlessPicker x:Name="StatusPicker" Placeholder="Selecione" ItemsSource="{Binding StatusPickerOptions}" Grid.Row="0" Grid.Column="0" SelectedItem="{Binding PaymentStatus}"
                                            Margin="10, 0, 10, 0"  
                                            BackgroundColor="Transparent" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start" TextColor="Black" Title="Selecionar"
                                            HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start">
                     <Picker.Effects>
                         <effects:PlainEntry></effects:PlainEntry>
                     </Picker.Effects>
-                </app1:BorderlessPicker>
+                </effects:BorderlessPicker>
                     </Grid>
                 </Frame>
                 

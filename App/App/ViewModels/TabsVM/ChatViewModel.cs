@@ -1,4 +1,5 @@
-﻿using App.Enums;
+﻿using App.Data;
+using App.Enums;
 using App.Models;
 using App.Services;
 using App.Views;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +25,7 @@ namespace App.ViewModels.TabsVM
     public class ChartViewModel : INotifyPropertyChanged
     {
 
-        private int minYear = 2022;
+        private const int minYear = 2022;
         private int maxYear = DateTime.Today.Year + 15;
         private int count = 0;
         private float totalPaid = 0;
@@ -41,24 +43,24 @@ namespace App.ViewModels.TabsVM
             }
         }
 
-        List<string> _months = new List<string>()
+        private static Dictionary<string, int> _months = new Dictionary<string, int>
             {
-                "Janeiro",
-                "Fevereiro",
-                "Março",
-                "Abril",
-                "Maio",
-                "Junho",
-                "Julho",
-                "Agosto",
-                "Setembro",
-                "Outubro",
-                "Novembro",
-                "Dezembro"
+                { "Janeiro" , 1 },
+                { "Fevereiro", 2 },
+                { "Março", 3 },
+                { "Abril", 4 },
+                { "Maio", 5 },
+                { "Junho", 6 },
+                { "Julho", 7 } ,
+                { "Agosto", 8 },
+                { "Setembro", 9 },
+                { "Outubro", 10 },
+                { "Novembro", 11 },
+                { "Dezembro", 12 }
             };
         public List<string> Months
         {
-            get { return _months; }
+            get { return _months.Keys.ToList(); }
         }
 
         bool _monthIsVisible = false;
@@ -153,8 +155,8 @@ namespace App.ViewModels.TabsVM
             }
         }
 
-        private int _selectedMonth = DateTime.Today.Month;
-        public int SelectedMonth
+        private string _selectedMonth;
+        public string SelectedMonth
         {
             get { return _selectedMonth; }
             set
@@ -175,7 +177,7 @@ namespace App.ViewModels.TabsVM
             }
         }
 
-        private DateTime? _startDate = DateTime.Today.AddDays(-1);
+        private DateTime? _startDate = DateTime.Today;
         public DateTime? StartDate
         {
             get { return _startDate; }
@@ -295,7 +297,12 @@ namespace App.ViewModels.TabsVM
 
             if ((propertyName == nameof(SelectedMonth) && MonthIsVisible) || (propertyName == nameof(MonthIsVisible) && MonthIsVisible))
             {
-                Task.Run(()=> LoadData(null, null, null, SelectedMonth + 1)).Wait();
+                if (SelectedMonth == null)
+                {
+                    SelectedMonth = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Today.ToString("MMMM", CultureInfo.CurrentCulture));
+                }
+
+                Task.Run(() => LoadData(null, null, null, _months[SelectedMonth])).Wait();
 
             }
             else if ((propertyName == nameof(SelectedYear) && YearIsVisible) || (propertyName == nameof(YearIsVisible) && YearIsVisible))
@@ -308,14 +315,17 @@ namespace App.ViewModels.TabsVM
                 DateTime endDateTime = new DateTime();
                 endDateTime = EndDate.Value.Add(new TimeSpan(23, 59, 59));
 
-                Task.Run(()=> LoadData(StartDate, endDateTime, null, null)).Wait();
+                Task.Run(() => LoadData(StartDate, endDateTime, null, null)).Wait();
             }
 
         }
 
         public async void LoadData(DateTime? startDate, DateTime? endDate, int? selectedYear, int? selectedMonth)
         {
-            Chart = await Startup.ServiceProvider.GetService<GenerateChartService>().GenerateChartAsync(selectedMonth, selectedYear, startDate, endDate);
+            if (selectedYear == null)
+                selectedYear = DateTime.Today.Year;
+
+            Chart = await Startup.ServiceProvider.GetService<GenerateChartData>().GenerateChartAsync(selectedMonth, selectedYear, startDate, endDate);
 
             count = new ObservableCollection<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().
                 FilterSearchAsync(null, startDate, endDate, null, selectedYear, selectedMonth, null, true)).Count;

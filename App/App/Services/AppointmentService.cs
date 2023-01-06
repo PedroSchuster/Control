@@ -38,7 +38,7 @@ namespace App.Services
             {
                 return _database.Table<Appointment>().OrderBy(x => x.Date).ToListAsync();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Application.Current.MainPage.DisplayAlert("Error", "Não foi possivel concluir essa operação", "Fechar");
                 return null;
@@ -51,11 +51,6 @@ namespace App.Services
             try
             {
                 List<Appointment> filterSearch = await ToListAsync();
-
-                if (year == null && startDate == null & finalDate == null)
-                {
-                    year = DateTime.Today.Year;
-                }
 
                 if (patient != null)
                 {
@@ -101,7 +96,7 @@ namespace App.Services
                 return filterSearch;
 
             }
-          
+
             catch (Exception)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Não foi possivel concluir essa operação", "Fechar");

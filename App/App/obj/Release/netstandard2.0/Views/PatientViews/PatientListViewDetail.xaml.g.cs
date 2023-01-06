@@ -17,7 +17,7 @@ namespace App.Views {
     public partial class PatientListViewDetail : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::App.Tools.BorderlessPicker FilterPicker;
+        private global::App.Renderes.BorderlessPicker FilterPicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ListView patientListView;
@@ -25,7 +25,7 @@ namespace App.Views {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(PatientListViewDetail));
-            FilterPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Tools.BorderlessPicker>(this, "FilterPicker");
+            FilterPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Renderes.BorderlessPicker>(this, "FilterPicker");
             patientListView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "patientListView");
         }
     }

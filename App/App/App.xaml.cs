@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using App.ViewModels;
 using App.ViewModels.TabsVM;
 using System.Threading.Tasks;
+using App.Tools;
 
 namespace App
 {
@@ -62,16 +63,14 @@ namespace App
 
         protected override void OnStart()
         {
-            Task.Run(() =>
-            {
-                _regAppV = new RegisterAppointmentView();
 
-                _regPatientV = new RegisterPatientView();
+            _regAppV = new RegisterAppointmentView();
 
-                _schV = new ScheduleView();
+            _regPatientV = new RegisterPatientView();
 
-                _chartV = new ChartView();
-            });
+            _schV = new ScheduleView();
+
+            _chartV = new ChartView();
         }
 
         protected override void OnSleep()

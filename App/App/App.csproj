@@ -12,11 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\**" />
     <Compile Remove="Interfaces\**" />
-    <EmbeddedResource Remove="Data\**" />
     <EmbeddedResource Remove="Interfaces\**" />
-    <None Remove="Data\**" />
     <None Remove="Interfaces\**" />
   </ItemGroup>
 

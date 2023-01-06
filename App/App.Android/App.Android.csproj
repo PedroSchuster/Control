@@ -41,7 +41,7 @@
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
@@ -49,6 +49,13 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidLinkSkip>App</AndroidLinkSkip>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -76,15 +83,15 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AndroidPlainEntryEffect.cs" />
-    <Compile Include="BordlessPickerRenderer.cs" />
-    <Compile Include="DoublePickerRendererAndroid.cs" />
-    <Compile Include="TabPageRenderer.cs" />
-    <Compile Include="TabRenderer.cs" />
-    <Compile Include="TimePickerCustomRenderAndroid.cs" />
-    <Compile Include="DatePickerCustomRenderAndroid.cs" />
-    <Compile Include="EntryCustomRenderer.cs" />
-    <Compile Include="ExtendedButtonRenderer.cs" />
+    <Compile Include="CustomRenderes\AndroidPlainEntryEffect.cs" />
+    <Compile Include="CustomRenderes\BordlessPickerRenderer.cs" />
+    <Compile Include="CustomRenderes\DoublePickerRendererAndroid.cs" />
+    <Compile Include="CustomRenderes\TabPageRenderer.cs" />
+    <Compile Include="CustomRenderes\TabRenderer.cs" />
+    <Compile Include="CustomRenderes\TimePickerCustomRenderAndroid.cs" />
+    <Compile Include="CustomRenderes\DatePickerCustomRenderAndroid.cs" />
+    <Compile Include="CustomRenderes\EntryCustomRenderer.cs" />
+    <Compile Include="CustomRenderes\ExtendedButtonRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -160,6 +167,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\caderno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\caderno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\caderno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\caderno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\caderno.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

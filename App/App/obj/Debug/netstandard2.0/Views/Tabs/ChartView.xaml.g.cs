@@ -17,20 +17,20 @@ namespace App.Views {
     public partial class ChartView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::App.Tools.BorderlessPicker FilterPicker;
+        private global::App.Renderes.BorderlessPicker FilterPicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::App.Tools.BorderlessPicker MonthPicker;
+        private global::App.Renderes.BorderlessPicker MonthPicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::App.Tools.BorderlessPicker YearPicker;
+        private global::App.Renderes.BorderlessPicker YearPicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ChartView));
-            FilterPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Tools.BorderlessPicker>(this, "FilterPicker");
-            MonthPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Tools.BorderlessPicker>(this, "MonthPicker");
-            YearPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Tools.BorderlessPicker>(this, "YearPicker");
+            FilterPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Renderes.BorderlessPicker>(this, "FilterPicker");
+            MonthPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Renderes.BorderlessPicker>(this, "MonthPicker");
+            YearPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Renderes.BorderlessPicker>(this, "YearPicker");
         }
     }
 }

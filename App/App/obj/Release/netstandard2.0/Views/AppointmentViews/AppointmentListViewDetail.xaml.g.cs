@@ -17,13 +17,13 @@ namespace App.Views {
     public partial class AppointmentListViewDetail : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::App.Tools.BorderlessPicker FilterPicker;
+        private global::App.Renderes.BorderlessPicker FilterPicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.SearchBar searchBar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::App.Tools.BorderlessPicker StatusPicker;
+        private global::App.Renderes.BorderlessPicker StatusPicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ListView appointmentListView;
@@ -31,9 +31,9 @@ namespace App.Views {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(AppointmentListViewDetail));
-            FilterPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Tools.BorderlessPicker>(this, "FilterPicker");
+            FilterPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Renderes.BorderlessPicker>(this, "FilterPicker");
             searchBar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.SearchBar>(this, "searchBar");
-            StatusPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Tools.BorderlessPicker>(this, "StatusPicker");
+            StatusPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::App.Renderes.BorderlessPicker>(this, "StatusPicker");
             appointmentListView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "appointmentListView");
         }
     }

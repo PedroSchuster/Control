@@ -5420,21 +5420,9 @@
             "target": "Package",
             "version": "[1.12.0, )"
           },
-          "Plugin.MaterialDesignControls": {
-            "target": "Package",
-            "version": "[1.12.0, )"
-          },
           "Rg.Plugins.Popup": {
             "target": "Package",
             "version": "[2.1.0, )"
-          },
-          "Rg.Plugins.Popup": {
-            "target": "Package",
-            "version": "[2.1.0, )"
-          },
-          "Xamarin.Android.Support.v7.CardView": {
-            "target": "Package",
-            "version": "[28.0.0.3, )"
           },
           "Xamarin.Android.Support.v7.CardView": {
             "target": "Package",
@@ -5444,21 +5432,9 @@
             "target": "Package",
             "version": "[1.7.0, )"
           },
-          "Xamarin.Essentials": {
-            "target": "Package",
-            "version": "[1.7.0, )"
-          },
           "Xamarin.Forms": {
             "target": "Package",
             "version": "[5.0.0.2196, )"
-          },
-          "Xamarin.Forms": {
-            "target": "Package",
-            "version": "[5.0.0.2196, )"
-          },
-          "Xamarin.Forms.BehaviorsPack": {
-            "target": "Package",
-            "version": "[3.0.0, )"
           },
           "Xamarin.Forms.BehaviorsPack": {
             "target": "Package",
