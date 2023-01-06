@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:viewmodels="clr-namespace:App.ViewModels" x:DataType="viewmodels:RegisterPatientViewModel"
+             xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects" xmlns:helpers="clr-namespace:App" 
+             x:Class="App.Views.RegisterPatientView" NavigationPage.HasNavigationBar="False" Shell.TabBarIsVisible="False"> 
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#5b4bd2" Padding="0,5,0,0">
+
+            <StackLayout HeightRequest="50" VerticalOptions="StartAndExpand" Padding="0,0,0,0" Margin="0,0,0,10">
+                <ImageButton HorizontalOptions="StartAndExpand" Source="back.png" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" 
+                             VerticalOptions="StartAndExpand" Command="{Binding GoBack}"></ImageButton>
+            </StackLayout>
+            
+            <Frame BackgroundColor="#6371e8" CornerRadius="30" Margin="10,20,10,20" HeightRequest="100" BorderColor="Transparent">
+                <Label Text="Registro de paciente" FontAttributes="Bold" FontSize="23" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </Frame>
+            
+            <Grid ColumnSpacing="10" RowSpacing="40" Margin="10,20,0,20" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="50">
+                    <Grid RowSpacing="-10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="*Nome: " TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                        <Frame  Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                            <Entry  Text="{Binding Name}"  FontSize="15" TextColor="White" PlaceholderColor="White" 
+                                    BackgroundColor="Transparent" VerticalOptions="End" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HeightRequest="150"  
+                                    HorizontalTextAlignment="Start" >
+                                <Entry.Effects>
+                                    <effects:PlainEntry></effects:PlainEntry>
+                                </Entry.Effects>
+                            </Entry>
+                        </Frame>
+                        <Label Grid.Row="2" Text="{Binding NameError.Text}" IsVisible="{Binding NameError.IsVisible}" TextColor="#e8473c" FontAttributes="Bold" 
+                               HorizontalOptions="StartAndExpand" Padding="10,10,0,0"></Label>
+                    </Grid>
+                </StackLayout>
+                
+                <StackLayout Grid.Column="1" Grid.Row="0" HeightRequest="50">
+                    <Image Source="check.png" xct:IconTintColorEffect.TintColor="#2cbb77" WidthRequest="30" HeightRequest="30" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand" IsVisible="False">
+                        <Image.Triggers>
+                            <MultiTrigger TargetType="Image">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding CheckName}" Value="True"></BindingCondition>
+                                    <BindingCondition Binding="{Binding CheckIsVisible}" Value="True"></BindingCondition>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsVisible" Value="True"></Setter>
+                            </MultiTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Image Source="x.png" WidthRequest="20" IsVisible="{Binding NameError.IsVisible}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                    </Image>
+                </StackLayout>
+                
+                <StackLayout Grid.Column="0" Grid.Row="1" HeightRequest="50">
+                    <Grid RowSpacing="-10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="*Cpf: " TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                        <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" HeightRequest="50"  Padding="10,0,0,0" BorderColor="Transparent">
+                            <Entry Text="{Binding Cpf}" Keyboard="Numeric" FontSize="15" TextColor="White" 
+                                   PlaceholderColor="White" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   HorizontalTextAlignment="Start">
+                                <Entry.Effects>
+                                    <effects:PlainEntry></effects:PlainEntry>
+                                </Entry.Effects>
+                            </Entry>
+                        </Frame>
+                        <Label Grid.Row="2" Text="{Binding CpfNull.Text}" IsVisible="{Binding CpfNull.IsVisible}" Padding="10,10,0,0" TextColor="#e8473c" FontAttributes="Bold" 
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Grid.Row="2" Text="{Binding CpfError.Text}" IsVisible="{Binding CpfError.IsVisible}" Padding="10,10,0,0" TextColor="#e8473c" FontAttributes="Bold" 
+                               HorizontalOptions="StartAndExpand"></Label>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Grid.Row="1" HeightRequest="50">
+                    <Image Source="check.png" xct:IconTintColorEffect.TintColor="#2cbb77" WidthRequest="30" IsVisible="false" HeightRequest="30" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image.Triggers>
+                            <MultiTrigger TargetType="Image">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding CheckCpf}" Value="True"></BindingCondition>
+                                    <BindingCondition Binding="{Binding CheckIsVisible}" Value="True"></BindingCondition>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsVisible" Value="True"></Setter>
+                            </MultiTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Image Source="x.png" WidthRequest="20" IsVisible="False" HeightRequest="20" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding CpfNull.IsVisible}" Value="True">
+                                <Setter Property="IsVisible" Value="True"></Setter>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Image" Binding="{Binding CpfError.IsVisible}" Value="True">
+                                <Setter Property="IsVisible" Value="True"></Setter>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+
+                <StackLayout Grid.Column="0" Grid.Row="2" HeightRequest="50">
+                    <Grid RowSpacing="-10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="Email: "  TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                        <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                            <Entry Text="{Binding Email}" Keyboard="Email" FontSize="15" 
+                               TextColor="White" PlaceholderColor="White" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start">
+                                <Entry.Effects>
+                                    <effects:PlainEntry></effects:PlainEntry>
+                                </Entry.Effects>
+                            </Entry>
+                        </Frame>
+                        <Label Grid.Row="2" Text="{Binding EmailError.Text}" IsVisible="{Binding EmailError.IsVisible}" Padding="10,10,0,0" TextColor="#e8473c" FontAttributes="Bold" 
+                               HorizontalOptions="StartAndExpand"></Label>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Grid.Row="2" HeightRequest="50">
+                    <Image Source="check.png" xct:IconTintColorEffect.TintColor="#2cbb77" WidthRequest="30" IsVisible="false" HeightRequest="30" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image.Triggers>
+                            <MultiTrigger TargetType="Image">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding Email,Converter={helpers:IsNullConverter}}" Value="False"></BindingCondition>
+                                    <BindingCondition Binding="{Binding CheckEmail}" Value="True"></BindingCondition>
+                                    <BindingCondition Binding="{Binding CheckIsVisible}" Value="True"></BindingCondition>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsVisible" Value="True"></Setter>
+                            </MultiTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Image Source="x.png" WidthRequest="20" IsVisible="{Binding EmailError.IsVisible}" HeightRequest="20" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand"></Image>
+                </StackLayout>
+
+                <StackLayout Grid.Column="0" Grid.Row="3" HeightRequest="50">
+                    <Grid RowSpacing="-10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="Data de nascimento: "  TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                        <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                            <DatePicker Date="{Binding Birth}" Format="dd/MM/yyyy" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="15">
+                                <DatePicker.Effects>
+                                    <effects:PlainEntry></effects:PlainEntry>
+                                </DatePicker.Effects>
+                            </DatePicker>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Grid.Row="3" HeightRequest="50" FlowDirection="LeftToRight">
+                    <Image Source="check.png" xct:IconTintColorEffect.TintColor="#2cbb77" WidthRequest="30" IsVisible="false" HeightRequest="30" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image.Triggers>
+                            <MultiTrigger TargetType="Image">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding Birth,Converter={helpers:IsNullConverter}}" Value="False"></BindingCondition>
+                                    <BindingCondition Binding="{Binding CheckIsVisible}" Value="True"></BindingCondition>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsVisible" Value="True"></Setter>
+                            </MultiTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+                
+                <StackLayout Grid.Column="0" Grid.Row="4" HeightRequest="50">
+                    <Grid RowSpacing="-10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="Celular: "  TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                        <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent">
+                            <Entry Text="{Binding PhoneNumber}" Keyboard="Telephone" FontSize="15" TextColor="White" PlaceholderColor="White" 
+                                   BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
+                                   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start">
+                                <Entry.Effects>
+                                    <effects:PlainEntry></effects:PlainEntry>
+                                </Entry.Effects>
+                            </Entry>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                
+                <StackLayout Grid.Column="1" Grid.Row="4" HeightRequest="50" FlowDirection="LeftToRight">
+                    <Image Source="check.png" xct:IconTintColorEffect.TintColor="#2cbb77" WidthRequest="30" IsVisible="false" HeightRequest="30" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image.Triggers>
+                            <MultiTrigger TargetType="Image">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding PhoneNumber,Converter={helpers:IsNullConverter}}" Value="False"></BindingCondition>
+                                    <BindingCondition Binding="{Binding CheckIsVisible}" Value="True"></BindingCondition>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsVisible" Value="True"></Setter>
+                            </MultiTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+
+            </Grid>
+           
+            <Button VerticalOptions="EndAndExpand" Grid.RowSpan="5" BackgroundColor="#6371e8" Text="Confirmar" FontAttributes="Bold" FontSize="23"
+                    TextColor="White" Command="{Binding RegisterCommand}" HeightRequest="130" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+            </Button>
+
+
+        </StackLayout>
+    </ContentPage.Content> 
+</ContentPage> 

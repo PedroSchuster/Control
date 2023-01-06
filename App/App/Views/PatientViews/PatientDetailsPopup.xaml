@@ -1,0 +1,235 @@
+﻿<pages:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:tools ="clr-namespace:App.Tools"
+                  xmlns:viewmodels="clr-namespace:App.ViewModels" xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects" x:DataType="viewmodels:PatientViewModel"
+                  x:Class="App.Views.PatientDetailsPopup" HasKeyboardOffset="False">
+
+    <ContentPage.Resources >
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame CornerRadius="30"  BackgroundColor="#5b4bd2" WidthRequest="400" HeightRequest="600" Margin="20,0">
+            <StackLayout>
+                <ImageButton Source="x.png" Command="{Binding CloseWindow}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="20" HorizontalOptions="End"></ImageButton>
+
+                <Grid ColumnSpacing="10" RowSpacing="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Text="Nome:" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0" ></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding Name}" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" FontSize="15" TextColor="White" 
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+
+                                    <Entry Text="{Binding Name}" IsVisible="{Binding EditEnable}" Keyboard="Text" FontSize="15" TextColor="White" PlaceholderColor="White" 
+                                       BackgroundColor="Transparent" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"  
+                                       HorizontalTextAlignment="Start">
+                                        <Entry.Effects>
+                                            <effects:PlainEntry></effects:PlainEntry>
+                                        </Entry.Effects>
+                                    </Entry>
+
+                                </StackLayout>
+                            </Frame>
+                            <Label Grid.Row="2" Text="{Binding NameError.Text}" IsVisible="{Binding NameError.IsVisible}" Padding="10,10,0,0" TextColor="#e8473c" FontAttributes="Bold" 
+                               HorizontalOptions="StartAndExpand"></Label>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="0" HeightRequest="50">
+                        <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="1" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Cpf:" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0" ></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding Cpf}" FontSize="15" TextColor="White" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
+                                       HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                </StackLayout>
+                            </Frame>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="1" HeightRequest="50">
+                        <Image Source="block.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="2" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Text="Data de nascimento:" FontSize="15" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding BirthString}" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" FontSize="15" TextColor="White" 
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+
+                                    <DatePicker Date="{Binding Birth}" IsVisible="{Binding EditEnable}" Format="dd/MM/yyyy" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                            TextColor="White" FontSize="15">
+                                        <DatePicker.Effects>
+                                            <effects:PlainEntry></effects:PlainEntry>
+                                        </DatePicker.Effects>
+                                    </DatePicker>
+
+                                </StackLayout>
+                            </Frame>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="2" HeightRequest="50">
+                        <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="3" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Text="Email: "  TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding Email}" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" FontSize="15" TextColor="White" 
+                               VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" 
+                               HorizontalOptions="FillAndExpand" 
+                               HorizontalTextAlignment="Start"></Label>
+
+                                    <Entry Text="{Binding Email}" IsVisible="{Binding EditEnable}" Keyboard="Email" FontSize="15" TextColor="White" PlaceholderColor="White" 
+                               VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"  
+                               HorizontalTextAlignment="Start">
+                                        <Entry.Effects>
+                                            <effects:PlainEntry></effects:PlainEntry>
+                                        </Entry.Effects>
+                                    </Entry>
+
+                                </StackLayout>
+                            </Frame>
+                            <Label Grid.Row="2" Text="{Binding EmailError.Text}" IsVisible="{Binding EmailError.IsVisible}" Padding="10,10,0,0" TextColor="#e8473c" FontAttributes="Bold" 
+                               HorizontalOptions="StartAndExpand"></Label>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="3" HeightRequest="50">
+                        <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="4" HeightRequest="50">
+                        <Grid RowSpacing="-10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Telefone:" FontSize="15" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+                            <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
+                                <StackLayout>
+                                    <Label Text="{Binding PhoneNumber}" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" FontSize="15" TextColor="White" 
+                                       VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Start"></Label>
+
+                                    <Entry Text="{Binding PhoneNumber}" IsVisible="{Binding EditEnable}" Keyboard="Numeric" FontSize="15" TextColor="White" PlaceholderColor="White" 
+                                       BackgroundColor="Transparent" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"  
+                                       HorizontalTextAlignment="Start">
+                                        <Entry.Effects>
+                                            <effects:PlainEntry></effects:PlainEntry>
+                                        </Entry.Effects>
+                                    </Entry>
+
+                                </StackLayout>
+                            </Frame>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="4" HeightRequest="50">
+                        <Image Source="pen.png" WidthRequest="20" IsVisible="{Binding EditEnable}" HeightRequest="20" VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="StartAndExpand">
+                        </Image>
+                    </StackLayout>
+
+                </Grid>
+                <Grid VerticalOptions="End" HeightRequest="100" Margin="0,50,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0" Grid.Row="0" IsVisible="{Binding EditEnable, Converter={StaticResource InvertedBoolConverter}}" BackgroundColor="#6371e8" 
+                            CornerRadius="30" Margin="40,20,40,30" Text="Editar" FontAttributes="Bold" FontSize="12" TextColor="White" Command="{Binding Edit}" 
+                            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                    </Button>
+
+                    <Button Grid.Column="0" Grid.Row="0" IsVisible="{Binding EditEnable}" BackgroundColor="#2cbb77" CornerRadius="30" Margin="40,20,40,30" Text="Confirmar" FontAttributes="Bold"
+                            FontSize="12" TextColor="White" Command="{Binding Confirm}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  
+                            xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                    </Button>
+
+                    <Button Grid.Column="1" Grid.Row="0" BackgroundColor="#e8473c" CornerRadius="30" Margin="40,20,40,30" Text="Remover" FontAttributes="Bold" FontSize="12"
+                            TextColor="White" Command="{Binding Delete}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  
+                            xct:ShadowEffect.Color="Black" xct:ShadowEffect.OffsetY="1" xct:ShadowEffect.Opacity="10">
+                    </Button>
+
+
+                </Grid>
+
+            </StackLayout>
+
+        </Frame>
+
+    </StackLayout>
+
+
+
+</pages:PopupPage>

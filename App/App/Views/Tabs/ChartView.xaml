@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tabsvm="clr-namespace:App.ViewModels.TabsVM" x:DataType="tabsvm:ChartViewModel" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:app1="clr-namespace:App.Tools" 
+             x:Class="App.Views.ChartView" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#5b4bd2" Padding="0,5,0,0">
+            <Grid HorizontalOptions="Center" Margin="20,20,20,20" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Frame Padding="0,0,0,0" Margin="0, 10, 0, 0" CornerRadius="30" Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        
+                        <ImageButton Source="arrow.png" WidthRequest="15" HeightRequest="15"  Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" 
+                                     VerticalOptions="Center" Clicked="FilterButton_Clicked" Margin="0" BackgroundColor="Transparent" ></ImageButton>
+                        <app1:BorderlessPicker  x:Name="FilterPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="10, 0, 10, 0"
+                                               ItemsSource="{Binding Filters}" SelectedItem="{Binding SelectedFilter}" BackgroundColor="Transparent" Title="Selecionar"/>
+
+                    </Grid>
+                </Frame>
+                <Frame Padding="0" Margin="0, 10, 0, 0" CornerRadius="30" Grid.Column="1" IsVisible="{Binding MonthIsVisible}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <ImageButton Source="arrow.png" WidthRequest="15" HeightRequest="15" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" 
+                                     VerticalOptions="Center" Clicked="MonthButton_Clicked" BackgroundColor="Transparent" Margin="0" ></ImageButton>
+                        <app1:BorderlessPicker x:Name="MonthPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="10, 0, 10, 0"
+                                               ItemsSource="{Binding Months}" Title="Selecionar" SelectedIndex="{Binding SelectedMonth}"/>
+                    </Grid>
+                </Frame>
+                <Frame Padding="0" Margin="0, 10, 0, 0" CornerRadius="30" Grid.Column="1" IsVisible="{Binding YearIsVisible}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+
+                        <ImageButton Source="arrow.png" WidthRequest="15" HeightRequest="15"  Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" 
+                                     VerticalOptions="Center" BackgroundColor="Transparent" Margin="0"  Clicked="YearButton_Clicked"></ImageButton>
+                        <app1:BorderlessPicker x:Name="YearPicker" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand"  Margin="10, 0, 10, 0" 
+                                               ItemsSource="{Binding Years}" Title="Selecionar" SelectedItem="{Binding SelectedYear}"/>
+                    </Grid>
+                </Frame>
+                <ImageButton Grid.Column="1" Source="calendar.png" BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60" HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="CenterAndExpand" Padding="25,10,0,0" IsVisible="{Binding DateIsVisible}" Command="{Binding CalendarPopup}" 
+                             IsEnabled="{Binding CalendarClicked}"></ImageButton>
+            </Grid>
+            
+            <Frame BackgroundColor="#6371e8" CornerRadius="30" Margin="10,20,10,10" HeightRequest="100" BorderColor="Transparent" >
+                <Label Text="{Binding TotalFoundText}" FontAttributes="Bold" FontSize="23" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </Frame>
+
+            <forms:ChartView HeightRequest="300" Chart="{Binding Chart}" Margin="20,20,20,10" ></forms:ChartView>
+            
+            <Grid Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0" BackgroundColor="#6371e8" CornerRadius="30" Margin="10,20,10,10" HeightRequest="50" BorderColor="Transparent" >
+                    <Label Text="{Binding PaidText}" FontAttributes="Bold" FontSize="15" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </Frame>
+                <Frame Grid.Column="1" BackgroundColor="#6371e8" CornerRadius="30" Margin="10,20,10,10" HeightRequest="50" BorderColor="Transparent">
+                    <Label Text="{Binding NotPaidText}" FontAttributes="Bold" FontSize="15" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
