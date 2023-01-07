@@ -49,7 +49,7 @@ namespace App.Services
 
                 if (!String.IsNullOrEmpty(name))
                 {
-                    filterSearch = filterSearch.Where(x => x.Name.ToLower().StartsWith(name)).ToList();
+                    filterSearch = filterSearch.Where(x => x.Name.ToLower().Contains(name.ToLower())).ToList();
                 }
                 if (!String.IsNullOrEmpty(cpf))
                 {

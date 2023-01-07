@@ -54,7 +54,7 @@ namespace App.Services
 
                 if (patient != null)
                 {
-                    filterSearch = filterSearch.Where(x => !String.IsNullOrEmpty(x.Patient) && x.Patient.ToLower().StartsWith(patient)).ToList();
+                    filterSearch = filterSearch.Where(x => !String.IsNullOrEmpty(x.Patient) && x.Patient.ToLower().Contains(patient.ToLower())).ToList();
                 }
 
                 if (startDate != null && duration == null)
