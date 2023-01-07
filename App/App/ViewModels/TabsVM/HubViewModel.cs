@@ -79,7 +79,7 @@ namespace App.ViewModels.TabsVM
                 DateTime thisWeekEnd = thisWeekStart.AddDays(7).AddSeconds(-1);
                 
                 totalAppointmentPerWeek = new List<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, thisWeekStart, thisWeekEnd, null, null, null, null, true)).Count;
-                totalAppointmentPerMonth = new List<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, null, null, null, null, DateTime.Today.Month, null, true)).Count;
+                totalAppointmentPerMonth = new List<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, null, null, null, DateTime.Today.Year, DateTime.Today.Month, null, true)).Count;
                 
                 int patientCount = new List<Patient>(await Startup.ServiceProvider.GetService<PatientService>().ToListAsync()).Count;
                 PatientText = "Total de pacientes: " + patientCount;
