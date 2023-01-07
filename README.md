@@ -26,7 +26,7 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ## Appointments list page:
 
-![WhatsApp Image 2023-01-06 at 07 34 28 (1)](https://user-images.githubusercontent.com/67712552/211104531-65b81086-925b-4d27-839c-916532154f2c.jpeg)
+![WhatsApp Image 2023-01-07 at 13 47 33](https://user-images.githubusercontent.com/67712552/211161480-2212dd50-2793-4507-9923-1493ccd170a8.jpeg)
 
 ## Patients list page:
 
@@ -34,7 +34,7 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ## Schedule view page:
 
-![WhatsApp Image 2023-01-06 at 07 34 29 (1)](https://user-images.githubusercontent.com/67712552/211104690-7f784e22-273a-4d55-aa83-b9526be5199c.jpeg)
+![WhatsApp Image 2023-01-06 at 07 34 29 (2)](https://user-images.githubusercontent.com/67712552/211161518-a37f326c-5aa1-4d12-9bbe-d1ceb0eec236.jpeg)
 
 ## Chart view page:
 
