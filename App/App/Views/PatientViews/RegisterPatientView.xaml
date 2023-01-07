@@ -77,7 +77,7 @@
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="30"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Text="*Cpf: " TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
+                        <Label Grid.Row="0" Text="*CPF: " TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="10,0,0,0"></Label>
                         <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" HeightRequest="50"  Padding="10,0,0,0" BorderColor="Transparent">
                             <Entry Text="{Binding Cpf}" Keyboard="Numeric" FontSize="15" TextColor="White" 
                                    PlaceholderColor="White" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" 

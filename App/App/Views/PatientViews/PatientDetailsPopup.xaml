@@ -73,7 +73,7 @@
                                 <RowDefinition Height="40"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <Label Text="Cpf:" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0" ></Label>
+                            <Label Text="CPF:" TextColor="White" FontAttributes="Bold" Padding="10,0,0,0" ></Label>
                             <Frame Grid.Row="1" BackgroundColor="#6371e8" CornerRadius="30" Padding="10,0,0,0" BorderColor="Transparent" >
                                 <StackLayout>
                                     <Label Text="{Binding Cpf}" FontSize="15" TextColor="White" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
