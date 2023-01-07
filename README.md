@@ -48,5 +48,5 @@ https://user-images.githubusercontent.com/67712552/211105216-631360ac-4805-4479-
 
 ## Download:
 
-The apk file it is attached to the repository so it just have to donwload that file and turn off Google Play Protect to allow the apk to be installed on your phone. It's only available on android. It can happen to have small text alignment errors depending on the version of the android but does not affect on how the application works.
+The apk file it is attached to the repository so it just have to download that file and turn off Google Play Protect to allow the apk to be installed on your phone. It's only available on android. It can happen to have small text alignment errors depending on the version of the android but does not affect on how the application works.
 
