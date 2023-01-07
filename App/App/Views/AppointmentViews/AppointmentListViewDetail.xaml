@@ -114,9 +114,6 @@
                                             <Label Text="{Binding Patient}" FontSize="Large" TextColor="White"/>
 
                                         </StackLayout>
-                                        <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                            <Label Text="{Binding Price}" FontSize="Large" HorizontalOptions="FillAndExpand" TextColor="White"/>
-                                        </StackLayout>
 
                                         <StackLayout Grid.Column="2" HorizontalOptions="FillAndExpand" Padding="0,10,0,0">
                                             <Label Text="{Binding Date, Converter={app1:DateStringConverter}}" FontSize="Large" HorizontalOptions="FillAndExpand" TextColor="White"/>
