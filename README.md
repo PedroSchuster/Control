@@ -4,7 +4,7 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ## Features:
 - Register new patients and appointments;
-- A list of patients and appointments with many filters where uou can select each item and edit if you want;
+- A list of patients and appointments with many filters where you can select each item and edit if you want;
 - A schedule view with all appointments in it;
 - A chart view with the report of how much money it was made in a time span which you can choose between per month, per year or select two dates.
 
