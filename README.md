@@ -12,11 +12,11 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ![WhatsApp Image 2023-01-06 at 07 34 29 (3)](https://user-images.githubusercontent.com/67712552/211103678-f0a16f5b-e008-4540-b314-81470f52ab10.jpeg)
 
-## Register patient page:
+## Patient registration page:
 
 ![WhatsApp Image 2023-01-06 at 07 34 28](https://user-images.githubusercontent.com/67712552/211103711-4ca4a6f1-466d-4f5b-9ddb-c70af5001a0a.jpeg)
 
-## Register appointment page:
+## Appointment registration page:
 
 ![WhatsApp Image 2023-01-06 at 07 34 29](https://user-images.githubusercontent.com/67712552/211104144-4cbe8353-d3d3-4867-a9e1-3ea08b1ef53e.jpeg)
 
