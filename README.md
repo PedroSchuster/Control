@@ -12,11 +12,11 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ![WhatsApp Image 2023-01-06 at 07 34 29 (3)](https://user-images.githubusercontent.com/67712552/211103678-f0a16f5b-e008-4540-b314-81470f52ab10.jpeg)
 
-## Register patient page:
+## Patient registration page:
 
 ![WhatsApp Image 2023-01-06 at 07 34 28](https://user-images.githubusercontent.com/67712552/211103711-4ca4a6f1-466d-4f5b-9ddb-c70af5001a0a.jpeg)
 
-## Register appointment page:
+## Appointment registration page:
 
 ![WhatsApp Image 2023-01-06 at 07 34 29](https://user-images.githubusercontent.com/67712552/211104144-4cbe8353-d3d3-4867-a9e1-3ea08b1ef53e.jpeg)
 
@@ -26,7 +26,7 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ## Appointments list page:
 
-![WhatsApp Image 2023-01-06 at 07 34 28 (1)](https://user-images.githubusercontent.com/67712552/211104531-65b81086-925b-4d27-839c-916532154f2c.jpeg)
+![WhatsApp Image 2023-01-07 at 13 47 33](https://user-images.githubusercontent.com/67712552/211161480-2212dd50-2793-4507-9923-1493ccd170a8.jpeg)
 
 ## Patients list page:
 
@@ -34,7 +34,7 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ## Schedule view page:
 
-![WhatsApp Image 2023-01-06 at 07 34 29 (1)](https://user-images.githubusercontent.com/67712552/211104690-7f784e22-273a-4d55-aa83-b9526be5199c.jpeg)
+![WhatsApp Image 2023-01-06 at 07 34 29 (2)](https://user-images.githubusercontent.com/67712552/211161518-a37f326c-5aa1-4d12-9bbe-d1ceb0eec236.jpeg)
 
 ## Chart view page:
 
@@ -48,5 +48,5 @@ https://user-images.githubusercontent.com/67712552/211105216-631360ac-4805-4479-
 
 ## Download:
 
-The apk file it is attached to the repository so it just have to donwload that file and turn off Google Play Protect to allow the apk to be installed on your phone. It's only available on android. It can happen to have small text alignment errors depending on the version of the android but does not affect on how the application works.
+The apk file it is attached to the repository so it just have to download that file and turn off Google Play Protect to allow the apk to be installed on your phone. It's only available on android. It can happen to have small text alignment errors depending on the version of the android but does not affect on how the application works.
 
