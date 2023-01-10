@@ -93,7 +93,7 @@ namespace App.ViewModels
         };
         public Label CpfError
         {
-            get { return _cpfError;}
+            get { return _cpfError; }
             set
             {
                 _cpfError = value;
@@ -184,21 +184,18 @@ namespace App.ViewModels
 
                 if (CheckName && CheckCpf && CheckEmail)
                 {
-                    if (Name.Split(' ').Length > 1)
+                    foreach (string word in Name.Split(' '))
                     {
-                        foreach (string word in Name.Split(' '))
+                        if (String.IsNullOrWhiteSpace(word))
                         {
-                            if (String.IsNullOrWhiteSpace(word))
-                            {
-                                Name.TrimEnd();
-                            }
-                            else
-                            {
-                                var upper = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(word);
-                                Name = Name.Replace(word, upper);
-                            }
-
+                            Name.TrimEnd();
                         }
+                        else
+                        {
+                            var upper = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(word);
+                            Name = Name.Replace(word, upper);
+                        }
+
                     }
 
                     await Startup.ServiceProvider.GetService<PatientService>().InsertAsync(new Patient
@@ -250,7 +247,7 @@ namespace App.ViewModels
                 }
             }
 
-            if(propertyName == nameof(Cpf))
+            if (propertyName == nameof(Cpf))
             {
                 if (!String.IsNullOrWhiteSpace(Cpf))
                 {
