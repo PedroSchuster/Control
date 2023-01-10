@@ -309,8 +309,8 @@ namespace App.ViewModels.TabsVM
             {
                 Task.Run(() => LoadData(null, null, SelectedYear, null)).Wait();
             }
-            else if ((propertyName == nameof(StartDate) && DateIsVisible) ||
-                (propertyName == nameof(EndDate) && DateIsVisible) || (propertyName == nameof(DateIsVisible) && DateIsVisible))
+            else if ((propertyName == nameof(StartDate) && DateIsVisible && EndDate != null) ||
+                (propertyName == nameof(EndDate) && DateIsVisible && StartDate != null) || (propertyName == nameof(DateIsVisible) && DateIsVisible))
             {
                 DateTime endDateTime = new DateTime();
                 endDateTime = EndDate.Value.Add(new TimeSpan(23, 59, 59));

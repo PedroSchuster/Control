@@ -51,7 +51,7 @@ namespace App.ViewModels.TabsVM
                 ObservableCollection<Patient> patients = new ObservableCollection<Patient>(await Startup.ServiceProvider.GetService<PatientService>().ToListAsync());
                 Patient lastPatient = patients.OrderByDescending(x => x.Id).FirstOrDefault();
                 if (lastPatient != null)
-                    PatientText = "Ultimo paciente cadastrado: \n" + lastPatient.Name;
+                    PatientText = "Último paciente cadastrado: \n" + lastPatient.Name;
                 else
                     PatientText = "Não há pacientes cadastrados";
 

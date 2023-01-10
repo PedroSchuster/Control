@@ -41,7 +41,7 @@ namespace App.Data
                         appointments = new ObservableCollection<Appointment>(await Startup.ServiceProvider.GetService<AppointmentService>().FilterSearchAsync(null, null, null, null, year, null, null, true));
                     }).Wait();
                 }
-                else if (startDate != null && finalDate != null)
+                if (startDate != null && finalDate != null)
                 {
                     Task.Run(async () =>
                     {

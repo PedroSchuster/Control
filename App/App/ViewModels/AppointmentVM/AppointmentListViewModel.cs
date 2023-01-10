@@ -248,8 +248,8 @@ namespace App.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             if (!isReseting && (propertyName == nameof(NameFilter) && NameFilter != null || (propertyName == nameof(PaymentStatus)) ||
-               (propertyName == nameof(StartDate) && DateFilterIsVisible) || propertyName == (nameof(isReseting)) ||
-               (propertyName == nameof(EndDate) && DateFilterIsVisible) || propertyName == nameof(OrderByAscending)))
+               (propertyName == nameof(StartDate) && DateFilterIsVisible && EndDate != null) || propertyName == (nameof(isReseting)) ||
+               (propertyName == nameof(EndDate) && DateFilterIsVisible && StartDate != null) || propertyName == nameof(OrderByAscending)))
             {
                 await Load();
                 AppointmentsFilteredList = appointments;
