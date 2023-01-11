@@ -42,7 +42,7 @@ Control it's a mobile app that was made for a psychologist to control its agenda
 
 ## Demo:
 
-Here's a little demo showing how the app works
+Here's a short video showing how the app works, some small features are not shown on the video
 
 https://user-images.githubusercontent.com/67712552/211661602-39e22a4e-db79-4487-932f-3702ffc10228.mp4
 
